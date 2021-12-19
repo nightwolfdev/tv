@@ -1,0 +1,15 @@
+<div id="header" class="navbar sticky-top bg-primary">
+    <a class="navbar-brand" routerLink="/">TV Search</a>
+
+    <form [formGroup]="form" (ngSubmit)="search()" role="search" class="form-inline my-2 my-lg-0">
+        <div class="input-group">
+            <input #searchField (focus)="searchField.select()" formControlName="term" type="search" class="form-control" placeholder="Search" autocomplete="off">
+            <select formControlName="type" class="form-select">
+                <option value="shows">Shows</option>
+                <option value="people">People</option>
+              </select>
+        </div>
+    </form>
+</div>
+
+<router-outlet></router-outlet>

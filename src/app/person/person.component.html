@@ -1,0 +1,63 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h4 *ngIf="notFound">Sorry, nothing could be found.</h4>
+      <h4 *ngIf="error">Sorry, there was an issue getting information from the server.</h4>
+
+      <ng-container *ngIf="person$ | async as person; else loading">
+        <div class="card">
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <img class="img-fluid rounded-start" [src]="person.image?.original || 'assets/no-image-original.png'" [alt]="person.name">
+            </div>
+            <div class="col-sm-12 col-md-8">
+              <div class="card-body">
+                <h1 class="card-title">{{ person.name }}</h1>
+
+                <p>
+                  <ng-container *ngIf="person?.birthday">
+                    <strong>Born:</strong> {{ person.birthday | date: 'longDate' }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="person?.deathday">
+                    <strong>Died:</strong> {{ person.deathday | date: 'longDate' }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="person?.country">
+                    <strong>Country:</strong> {{ person.country.name }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="person?.gender">
+                    <strong>Gender:</strong> {{ person.gender }}<br />
+                  </ng-container>
+                </p>
+
+                <h2 class="card-title">Shows</h2>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2 mb-4">
+                  <ng-container *ngFor="let show of person?.shows">
+                    <div class="col">
+                      <div class="card card-link" [routerLink]="['/show', show.id]">
+                        <img class="card-img-top" [src]="show.image?.medium || 'assets/no-image-medium.png'" [alt]="show.name">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ show.name }}</h4>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-container>
+                  <p *ngIf="person?.shows?.length === 0">
+                    No shows available.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #loading>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>

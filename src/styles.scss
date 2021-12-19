@@ -1,1 +1,30 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+#header {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+
+    a.navbar-brand {
+        color: #f6f6f6;
+    }
+}
+
+.card-link {
+    transition: all .2s ease-in-out;
+
+    .card-body {
+        font-weight: normal;
+        text-align: center;
+    }
+
+    &:hover {
+        color: #0d6efd;
+        cursor: pointer;
+        font-weight: bold;
+        transform: scale(1.01);
+
+        img {
+            filter: brightness(110%);
+        }
+    }
+}

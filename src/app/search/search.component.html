@@ -1,0 +1,24 @@
+<div *ngIf="tvSvc.searchResultsLoading" class="d-flex justify-content-center mt-4">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+</div>
+
+<h4 *ngIf="tvSvc.searchResultsError" class="text-center mt-4">Sorry, there was an issue getting information from the server.</h4>
+
+<div class="container mt-4">
+    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
+        <ng-container *ngIf="searchResults$ | async as searchResults">
+            <ng-container *ngFor="let entry of searchResults">
+                <div class="col">
+                    <div class="card card-link" [routerLink]="[entry.searchType ? '/show' : '/person', entry.id]">
+                        <img class="card-img-top" [src]="entry.image?.medium || 'assets/no-image-medium.png'" [alt]="entry.name">
+                        <div class="card-body">
+                            <h4 class="card-title">{{ entry.name }}</h4>
+                        </div>
+                    </div>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

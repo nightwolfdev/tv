@@ -1,0 +1,80 @@
+<div class="container mt-4">
+  <div class="row">
+    <div class="col">
+      <h4 *ngIf="notFound">Sorry, nothing could be found.</h4>
+      <h4 *ngIf="error">Sorry, there was an issue getting information from the server.</h4>
+
+      <ng-container *ngIf="show$ | async as show; else loading">
+        <div class="card">
+          <div class="row">
+            <div class="col-sm-12 col-md-4">
+              <img class="img-fluid rounded-start" [src]="show.image?.original || 'assets/no-image-original.png'" [alt]="show.name">
+            </div>
+            <div class="col-sm-12 col-md-8">
+              <div class="card-body">
+                <h1 class="card-title">{{ show.name }}</h1>
+
+                <div *ngIf="show?.summary" [innerHTML]="show.summary"></div>
+
+                <p>
+                  <ng-container *ngIf="show?.rating?.average">
+                    <strong>Rating:</strong> {{ show.rating.average }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="show?.network">
+                    <strong>Network:</strong> {{ show.network.name }} ({{ show.network.country.name }})<br />
+                  </ng-container>
+                  <ng-container *ngIf="show?.status">
+                    <strong>Status:</strong> {{ show.status }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="show?.type">
+                    <strong>Type:</strong> {{ show.type }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="show?.genres?.length">
+                    <strong>Genres:</strong> {{ show.genres.join(', ') }}<br />
+                  </ng-container>
+                  <ng-container *ngIf="show?.officialSite">
+                    <strong>Official Website:</strong>&nbsp;<a target="_blank" [href]="show.officialSite" rel="noopener noreferrer">{{ show.officialSite }}</a>
+                  </ng-container>
+                </p>
+
+                <div *ngIf="show?._embedded?.cast?.length">
+                  <h2 class="card-title">Cast</h2>
+
+                  <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4 mt-2 mb-4">
+                    <ng-container *ngFor="let cast of show?._embedded?.cast">
+                      <div class="col">
+                        <div class="card card-link" [routerLink]="['/person', cast.person.id]">
+                          <img class="card-img-top" [src]="cast.person.image?.medium || 'assets/no-image-medium.png'" [alt]="cast.person.name">
+                          <div class="card-body">
+                              <h4 class="card-title">{{ cast.person.name }}</h4>
+                              {{ cast.character.name }}
+                          </div>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+
+                <div *ngIf="show?._embedded?.seasons?.length">
+                  <h2 class="card-title">Seasons</h2>
+
+                  <ul class="mt-2">
+                    <li *ngFor="let season of show?._embedded?.seasons">Season {{ season.number }} ({{ season.premiereDate | date: 'longDate' }} - {{ season.endDate | date: 'longDate' }})</li>
+                  </ul>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <ng-template #loading>
+        <div class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+</div>
