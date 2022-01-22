@@ -6,9 +6,9 @@
 
 <h4 *ngIf="tvSvc.searchResultsError" class="text-center mt-4">Sorry, there was an issue getting information from the server.</h4>
 
-<div class="container mt-4">
-    <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
-        <ng-container *ngIf="searchResults$ | async as searchResults">
+<ng-container *ngIf="searchResults$ | async as searchResults; else intro">
+    <div class="container mt-4">
+        <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4">
             <ng-container *ngFor="let entry of searchResults">
                 <div class="col">
                     <div class="card card-link" [routerLink]="[entry.searchType ? '/show' : '/person', entry.id]">
@@ -19,6 +19,19 @@
                     </div>
                 </div>
             </ng-container>
-        </ng-container>
+        </div>
     </div>
-</div>
+</ng-container>
+<ng-template #intro>
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+              <h1 class="mb-4">TV Search</h1>
+              <p>This is an application used to learn <a target="_blank" rel="noopener noreferrer" href="https://angular.io">Angular</a>, <a target="_blank" rel="noopener noreferrer" href="https://rxjs.dev">RxJS</a>, and <a target="_blank" rel="noopener noreferrer" href="https://www.typescriptlang.org">TypeScript</a>.</p>
+              <p>The <a target="_blank" rel="noopener noreferrer" href="https://www.tvmaze.com/api">TV Maze API</a> is used to gather all the data that you see.</p>
+              <p>Styles used in the application comes from <a target="_blank" rel="noopener noreferrer" href="https://getbootstrap.com/">Bootstrap</a>.</p>
+              <p>Code can be reviewed in the <a target="_blank" rel="noopener noreferrer" href="https://github.com/nightwolfdev/tv">Github Repo</a>.</p>
+            </div>
+          </div>
+    </div>
+</ng-template>

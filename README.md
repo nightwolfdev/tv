@@ -1,4 +1,4 @@
-# Tv
+# Tv Search
 
 TV Search app using TV Maze API.
 
