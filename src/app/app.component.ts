@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup } from '@angular/forms';
 
 import { TvService } from './shared/services/tv.service';
 
@@ -9,10 +9,10 @@ import { TvService } from './shared/services/tv.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  form: FormGroup;
+  form: UntypedFormGroup;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private tvSvc: TvService
   ) {}
 
