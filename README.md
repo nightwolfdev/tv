@@ -2,6 +2,19 @@
 
 TV Search app using TV Maze API.
 
+## Getting Started
+
+1. Clone the repo  
+  `git clone https://github.com/nightwolfdev/tv.git`
+2. Navigate to the project folder  
+  `cd tv`
+3. Install dependencies  
+  `npm install`
+4. Run the app  
+  `ng serve`
+5. Visit the app in a browser  
+  `http://localhost:4200`
+
 ## Links
 
 * [Demo](https://nightwolf.dev/demos/tv)
