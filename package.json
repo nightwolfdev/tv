@@ -1,5 +1,12 @@
 {
   "name": "tv",
+  "description": "TV Search app using Angular, RxJS, Typescript and the TV Maze API.",
+  "keywords": ["api", "angular", "typescript", "rxjs"],
+  "homepage": "https://github.com/nightwolfdev/tv",
+  "author": {
+    "name": "NightWolf Software Development",
+    "url": "https://nightwolf.dev"
+  },
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
