@@ -1,6 +1,8 @@
 # Tv Search
 
-TV Search app using TV Maze API.
+![LEGO Search App](./src/assets/tv-search-app.png)
+
+TV Search app using Angular, RxJS, Typescript and the TV Maze API.
 
 ## Getting Started
 
