@@ -2,7 +2,7 @@
 
 ![LEGO Search App](./src/assets/tv-search-app.png)
 
-TV Search app using Angular, RxJS, Typescript and the TV Maze API.
+Search TV shows and people. View more details about each show and person.
 
 ## Getting Started
 
@@ -21,6 +21,7 @@ TV Search app using Angular, RxJS, Typescript and the TV Maze API.
 
 * [Demo](https://nightwolf.dev/demos/tv)
 * [Angular](https://angular.io)
+* [Bootstrap](https://getbootstrap.com)
 * [RxJS](https://rxjs.dev)
 * [TypeScript](https://www.typescriptlang.org)
 * [TV Maze API](https://www.tvmaze.com/api)
